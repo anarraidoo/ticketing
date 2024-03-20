@@ -1,0 +1,9 @@
+{% extends "applayout.html" %}
+{% block title %}
+Ticket
+{% endblock %}
+{% block content %}
+    You are viewing the ticket submitted by {{ ticket.submitter }} with body: {{ticket.body}}
+    <br/>
+{% endblock %}
+

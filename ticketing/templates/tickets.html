@@ -1,0 +1,49 @@
+{% extends "applayout-dark.html" %}
+{% block title %}
+{% load mytags %}
+Tickets
+{% endblock %}
+{% block content %}
+    <div class="tickets">
+        {% for ticket in tickets %}
+        <div class="ticket">
+            <h3>Ticket {{ticket.pk}}</h3>
+            <div class="info">
+                submitted by <strong>{{ticket.submitter}}</strong>
+                on <strong>{{ticket.created_at|mydate:True}}</strong>
+                {% comment %}
+                <h3>Before substituting mydate tags</h3>
+                on <strong>{{ticket.created_at|date:"l, d M, Y"}}</strong>
+                at <strong>{{ticket.created_at|time:"H:i"}}</strong>
+                {% endcomment %}
+            </div>
+            <h4>Description</h4>
+            <div class="body">{{ticket.body}}</div>
+            <a class="viewticket" href="{% url 'ticket' ticket.pk %}">View Ticket</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% comment "TODO" %}
+    <h3>Code before applayout inheritance</h3>
+    {% for ticket in tickets %}
+        {% autoescape off %}
+            {% if ticket.submitter == 'Mr Robot' %}
+                <div>submitter: {{ticket.submitter | escape}}, created at {{ ticket.created_at }} with body: {{ ticket.body }}</div>
+            {% else %}
+                <div>submitter: {{ticket.submitter}}, created at {{ ticket.created_at }} with body: {{ ticket.body }}</div>
+            {% endif %}
+        {% endautoescape %}
+        <a href="{% url 'ticket' ticket.pk %}">View this ticket</a>
+        <hr>
+
+    <!--    {% if ticket.submitter == "Test user" %}-->
+    <!--        <div>submitter: {{ticket.submitter}}, created at {{ ticket.created_at }} with body: {{ ticket.body }}</div>-->
+    <!--    {% else %}-->
+    <!--        <div style="color: red">submitter: {{ticket.submitter}}, created at {{ ticket.created_at }} with body: {{ ticket.body }}</div>-->
+    <!--    {% endif %}-->
+    {% endfor %}
+    <!--The first ticket was submitted by "{{ tickets.0.submitter }}"-->
+    <!--and has the body:-->
+    <!--<p> {{ tickets.0.body }}</p>-->
+    {% endcomment %}
+{% endblock %}

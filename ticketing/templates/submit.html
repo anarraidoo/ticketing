@@ -1,0 +1,14 @@
+{% extends "applayout-dark.html" %}
+{% block title %}
+Submit
+{% endblock %}
+{% block content %}
+<form action="/submit" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="username">
+    <br/>
+    <textarea placeholder="body" name="body"></textarea>
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
