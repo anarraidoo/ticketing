@@ -2,4 +2,4 @@ A Django-based Bug Ticketing project designed to streamline backend development 
  
   This is part of the project course course [Building Web Applications with Django Path](https://app.pluralsight.com/paths/skills/building-web-applications-with-django)
 
-Implemented with basic HTML, CSS, JS, and a Jinja2 version.
+Implemented with basic HTML, CSS, JS, and a Jinja2 version is also included.
